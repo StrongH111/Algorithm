@@ -47,16 +47,32 @@ package leetcode.editor.cn;
 // Related Topics 数组 哈希表 👍 20825 👎 0
 
 //Java：两数之和
-public class TwoSum{
+class TwoSum{
     public static void main(String[] args) {
         Solution solution = new TwoSum().new Solution();
+        solution.twoSum(new int[]{3,2,4},6);
         // TO TEST
     }
     
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        
+        //哈希
+            return null;
+        }
+
+    public int[] twoSum1(int[] nums, int target) {
+//暴力解法：
+//        借助冒泡的思想，遍历数组，将数组中的每一个数与数组中每一个数相加，如果等于target，则返回两个数的索引
+        for (int i = 0; i < nums.length-1; i++){
+            for (int j = i+1; j < nums.length; j++) {
+                if(nums[i] + nums[j] == target){
+                    return new int[]{i,j};
+                }
+            }
+        }
+        return null;
+
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

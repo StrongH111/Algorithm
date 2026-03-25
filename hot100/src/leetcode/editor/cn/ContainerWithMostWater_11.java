@@ -38,7 +38,7 @@ package leetcode.editor.cn;
 // Related Topics 贪心 数组 双指针 👍 5902 👎 0
 
 //Java：盛最多水的容器
-public class ContainerWithMostWater{
+ class ContainerWithMostWater{
     public static void main(String[] args) {
         Solution solution = new ContainerWithMostWater().new Solution();
         // TO TEST
@@ -46,8 +46,26 @@ public class ContainerWithMostWater{
     
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public int x(int[] height) {
-        
+    public int maxArea(int[] height) {
+        //贪心 + 双指针 +木桶效应
+        //木桶效应：木桶能装多少水取决于最短的那块木板，所以每次移动最短的那块木板，
+        // 直到两个指针相遇，在移动过程中，记录当前值，并和最大值进行比较，更新最大值
+        //循环用while
+        int left = 0;
+        int right = height.length-1;
+        int max = 0;
+        while(left <right){
+            int current = 0;
+            if(height[left] > height[right]){
+                current= height[right] *(right -left);
+                right --;
+            }else{
+                current = height[left] *(right -left);
+                left ++;
+            }
+            max = current > max ? current :max;
+        }
+        return max;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
